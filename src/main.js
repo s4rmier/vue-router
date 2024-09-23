@@ -25,6 +25,7 @@ const router = createRouter({
       path: '/teams/:teamId',
       //   dynamic routing. teamId is a name of your choice
       component: TeamMembers,
+      props: true,
     },
   ],
   linkActiveClass: 'active', //this can be used for styling purposes. by default, the class assigned to an active route is 'router-link-active'. linkActiveClass is a way to change the default active class.
