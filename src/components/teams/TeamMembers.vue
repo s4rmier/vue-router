@@ -20,8 +20,25 @@ export default {
   components: {
     UserItem,
   },
+
   data() {
-    return {};
+    return {
+      teamName: '',
+      members: [],
+    };
+  },
+
+  created() {
+    const teamId = this.$route.params.teamId;
+    const selectedTeam = this.teams.find((team) => team.id == teamId);
+    const members = selectedTeam.members;
+    const selectedMembers = [];
+    for (const member of members) {
+      const selectedUser = this.users.find((user) => user.id === member);
+      selectedMembers.push(selectedUser);
+    }
+    this.members = selectedMembers;
+    this.teamName = selectedTeam.name;
   },
 };
 </script>

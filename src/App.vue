@@ -1,6 +1,5 @@
 <template>
   <the-navigation></the-navigation>
-  <button @click="confirmInput">Confirm</button>
   <main>
     <router-view></router-view>
   </main>
@@ -34,12 +33,6 @@ export default {
       teams: this.teams,
       users: this.users,
     };
-  },
-
-  methods: {
-    confirmInput() {
-      this.$router.push('/users');
-    },
   },
 };
 </script>
