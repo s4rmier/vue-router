@@ -15,9 +15,19 @@ const router = createRouter({
       redirect: '/teams',
     },
     {
+      name: 'teams',
       path: '/teams',
       component: TeamsList,
       // alias: '/' this allows this component to be rendered when path is = to '/'
+      children: [
+        {
+          name: 'team-members',
+          path: ':teamId',
+          //   dynamic routing. teamId is a name of your choice
+          component: TeamMembers,
+          props: true,
+        },
+      ],
     },
     {
       path: '/users',
@@ -27,12 +37,7 @@ const router = createRouter({
     //   path: '/teams/new',
     //   //   order matters. teams/new must come first before teams/:teamId because teams/new can be interpreted as /:teamId
     // },
-    {
-      path: '/teams/:teamId',
-      //   dynamic routing. teamId is a name of your choice
-      component: TeamMembers,
-      props: true,
-    },
+
     { path: '/404', component: NotFound },
     { path: '/:notFound(.*)', redirect: '/404' }, //catch all url/url parameters.. can send to page not found
   ],
