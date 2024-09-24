@@ -48,7 +48,14 @@ export default {
 
   created() {
     this.loadTeamMembers(this.teamId);
+    // console.log(this.$route.query); //query parameters are provided to TeamMembers by it's parent component
   },
+
+  beforeRouteUpdate(to, from, next) {
+    console.log('Team members beforeRouteUpdate', to, from);
+    next();
+  },
+  // this is a navigation guard used for reused components. this is called when a component is about to be reused but with new data
 
   watch: {
     teamId(newId) {
